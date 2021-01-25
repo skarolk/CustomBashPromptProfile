@@ -1,12 +1,19 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+# for .zlogin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
+function prompt {
+    ## Define the prompt character
+    local CHAR="☠" ## ♥ ☆ ♬ ○ ♩ ● ♪ - Keeping some cool ASCII Characters for reference
+    autoload -U colors && colors
+    ## Here is where we actually export the PS1 Variable which stores the text for your prompt
+    PS1="%{$fg[green]%}%(4~|%-1~/.../%2~|%~) %{$fg[white]%}%{$CHAR%} %{$fg[green]%}%{>%} %{$reset_color%}% "
+    PS2='> '
+    PS4='+ '
+}
+
+prompt
+
+# older .bash_profile
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
